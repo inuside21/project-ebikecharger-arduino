@@ -71,11 +71,12 @@ void setup() {
 
   // display
   lcd.clear();
-  lcd.setCursor(0, 0);        
-  lcd.print("E-Bike Charger"); 
   lcd.setCursor(0, 1);        
-  lcd.print("Starting..."); 
+  lcd.print("   E-Bike Charger   "); 
+  lcd.setCursor(0, 2);        
+  lcd.print("     Starting...    "); 
   delay(3000);
+  lcd.clear();
 }
 
 
@@ -86,11 +87,10 @@ void loop() {
   // display
   if (ctrs <= 0)
   {
-    lcd.clear();
-    lcd.setCursor(0, 0);        
-    lcd.print("E-Bike Charger");
-    lcd.setCursor(0, 1);    
-    lcd.print("Insert coin..."); 
+    lcd.setCursor(0, 1);        
+    lcd.print("   E-Bike Charger   "); 
+    lcd.setCursor(0, 2);    
+    lcd.print("   Insert coin...   "); 
   }
   
   // input
@@ -106,10 +106,10 @@ void loop() {
     Serial.println(ctrs);
 
     lcd.clear();
-    lcd.setCursor(0, 0);        
-    lcd.print("E-Bike Charger");
-    lcd.setCursor(0, 1);    
-    lcd.print("Balance: " + String(ctrs)); 
+    lcd.setCursor(0, 1);        
+    lcd.print("   E-Bike Charger   "); 
+    lcd.setCursor(0, 2);    
+    lcd.print("    Balance: " + String(ctrs)); 
   }
 
   // check
@@ -126,13 +126,13 @@ void loop() {
       {
         lcd.clear();
         lcd.setCursor(0, 0);        
-        lcd.print("E-Bike Charger");
+        lcd.print("   E-Bike Charger   "); 
         lcd.setCursor(0, 1);    
-        lcd.print("Charging Port: #1"); 
+        lcd.print("  Charging Port: 1  "); 
         lcd.setCursor(0, 2);    
-        lcd.print("Remaining Time:"); 
+        lcd.print("  Remaining Time    "); 
         lcd.setCursor(0, 3);    
-        lcd.print(String(remainingTime) + " seconds");
+        lcd.print("    " + String(remainingTime) + " seconds");
         delay(1000);
         remainingTime -= 1;
       }
@@ -141,13 +141,13 @@ void loop() {
       {
         lcd.clear();
         lcd.setCursor(0, 0);        
-        lcd.print("E-Bike Charger");
+        lcd.print("   E-Bike Charger   "); 
         lcd.setCursor(0, 1);    
-        lcd.print("Charging Port: #2"); 
+        lcd.print("  Charging Port: 2  ");  
         lcd.setCursor(0, 2);    
-        lcd.print("Remaining Time:"); 
+        lcd.print("   Remaining Time   "); 
         lcd.setCursor(0, 3);    
-        lcd.print(String(remainingTime) + " seconds");
+        lcd.print("    " + String(remainingTime) + " seconds");
         delay(1000);
         remainingTime -= 1;
       }
@@ -186,6 +186,9 @@ void loop() {
       digitalWrite(out6, HIGH);
       digitalWrite(out7, HIGH);
       digitalWrite(out8, HIGH);
+
+      // display
+      lcd.clear();
     }
   }
 }
